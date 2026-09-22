@@ -247,7 +247,7 @@ function lineOf(fileText, key) {
   return idx === -1 ? 1 : fileText.slice(0, idx).split('\n').length;
 }
 
-export function run({ root = ROOT, strict = false, config = DEFAULT_CONFIG, log = console.log } = {}) {
+export function run({ root = ROOT, strict = false, config = DEFAULT_CONFIG, log = console.log, summary = false } = {}) {
   const read = (loc) => {
     const path = resolve(root, config.localesDir, `${loc}.json`);
     const text = readFileSync(path, 'utf8');
@@ -287,7 +287,7 @@ export function run({ root = ROOT, strict = false, config = DEFAULT_CONFIG, log 
   for (const f of all) {
     const tag = f.level === 'error' ? red('ERROR  ') : yellow('WARNING');
     log(`${tag} ${f.code.padEnd(16)} ${f.key}\n        ${f.message}`);
-    if (inActions) {
+    if (inActions && summary) {
       const esc = (s) => s.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
       log(`::${f.level} file=${f.file},line=${f.line},title=${esc(f.code)}::${esc(`${f.key}: ${f.message}`)}`);
     }
@@ -296,7 +296,7 @@ export function run({ root = ROOT, strict = false, config = DEFAULT_CONFIG, log 
   const failed = errors.length > 0 || (strict && warnings.length > 0);
   log(`\n${failed ? red('FAIL') : green('PASS')}  ${errors.length} error(s), ${warnings.length} warning(s)${strict ? ' [strict]' : ''}`);
 
-  if (inActions && process.env.GITHUB_STEP_SUMMARY) {
+  if (summary && inActions && process.env.GITHUB_STEP_SUMMARY) {
     const rows = all.map((f) => `| ${f.level === 'error' ? '❌' : '⚠️'} | \`${f.code}\` | \`${f.key}\` | ${f.message.replace(/\|/g, '\\|')} |`);
     appendFileSync(process.env.GITHUB_STEP_SUMMARY,
       `## EN/FR parity: ${failed ? '❌ blocked' : '✅ passed'}\n\n${errors.length} error(s), ${warnings.length} warning(s)\n\n` +
@@ -306,6 +306,6 @@ export function run({ root = ROOT, strict = false, config = DEFAULT_CONFIG, log 
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const { failed } = run({ strict: process.argv.includes('--strict') });
+  const { failed } = run({ strict: process.argv.includes('--strict'), summary: true });
   process.exit(failed ? 1 : 0);
 }
