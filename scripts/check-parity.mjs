@@ -186,10 +186,10 @@ export function checkLocales({ base, target, baseName, targetName, glossary, con
         add('error', 'E5 glossary', key,
           `English says "${term.en}", so French must use "${term.approved.join('" or "')}". ${term.note}`.trim());
       }
-      for (const bad of term.avoid) {
-        if (containsTerm(frText, bad)) {
-          add('error', 'E6 avoid-term', key, `Avoid "${bad}"; use "${term.approved.join('" or "')}". ${term.note}`.trim());
-        }
+      const hits = term.avoid.filter((bad) => containsTerm(frText, bad));
+      // report "e-mail", not also "mail" inside it
+      for (const bad of hits.filter((h) => !hits.some((o) => o !== h && norm(o).includes(norm(h))))) {
+        add('error', 'E6 avoid-term', key, `Avoid "${bad}"; use "${term.approved.join('" or "')}". ${term.note}`.trim());
       }
     }
 
