@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="app.title"></title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Every user-facing string comes from locales/*.json via data-i18n.
+       Never hardcode text here. See .github/copilot-instructions.md -->
+  <header class="topbar">
+    <span class="brand" data-i18n="app.demo_banner"></span>
+    <nav>
+      <a href="#" id="language-toggle" data-i18n="nav.language_toggle"></a>
+      <a href="#" data-i18n="nav.sign_in"></a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 data-i18n="app.title"></h1>
+    <p class="lead" data-i18n="app.subtitle"></p>
+    <p class="deadline" id="deadline"></p>
+
+    <form id="application" novalidate>
+      <fieldset>
+        <legend data-i18n="form.section.personal"></legend>
+
+        <label for="full-name"><span data-i18n="form.full_name.label"></span> <abbr data-i18n-title="form.required">*</abbr></label>
+        <input id="full-name" name="fullName" required autocomplete="name">
+
+        <label for="dob"><span data-i18n="form.date_of_birth.label"></span> <abbr data-i18n-title="form.required">*</abbr></label>
+        <input id="dob" name="dob" type="date" required>
+
+        <label for="email"><span data-i18n="form.email.label"></span> <abbr data-i18n-title="form.required">*</abbr></label>
+        <input id="email" name="email" type="email" required autocomplete="email">
+        <p class="hint" data-i18n="form.email.hint"></p>
+
+        <label for="phone" data-i18n="form.phone.label"></label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel">
+
+        <label for="postal"><span data-i18n="form.postal_code.label"></span> <abbr data-i18n-title="form.required">*</abbr></label>
+        <input id="postal" name="postal" required autocomplete="postal-code">
+
+        <label for="province" data-i18n="form.province.label"></label>
+        <select id="province" name="province">
+          <option>AB</option><option>BC</option><option>MB</option><option>NB</option>
+          <option>NL</option><option>NS</option><option>NT</option><option>NU</option>
+          <option selected>ON</option><option>PE</option><option>QC</option><option>SK</option><option>YT</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="form.section.documents"></legend>
+        <label class="button secondary" for="files" data-i18n="form.upload.button"></label>
+        <input id="files" type="file" multiple hidden>
+        <p id="file-count" aria-live="polite"></p>
+      </fieldset>
+
+      <p class="estimate" id="estimate"></p>
+      <p class="hint" data-i18n="form.privacy"></p>
+      <p class="error" id="error" role="alert" hidden></p>
+
+      <div class="actions">
+        <button type="submit" data-i18n="form.submit.button"></button>
+        <button type="button" class="secondary" data-i18n="form.save.button"></button>
+        <button type="reset" class="link" data-i18n="form.cancel.button"></button>
+      </div>
+    </form>
+
+    <section id="confirmation" hidden>
+      <h2 data-i18n="confirmation.title"></h2>
+      <p id="confirmation-body"></p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" data-i18n="footer.contact"></a>
+    <a href="#" data-i18n="footer.terms"></a>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

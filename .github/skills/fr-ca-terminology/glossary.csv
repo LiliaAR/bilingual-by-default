@@ -1,0 +1,25 @@
+en,fr_ca,avoid,note
+email,courriel,e-mail|mail|mél|email,"Use « courriel » for the message and « adresse de courriel » for the address."
+email address,adresse de courriel,adresse e-mail|adresse email|adresse mail,
+sign in,se connecter|connexion,login|se loguer,"Button text: « Se connecter »."
+sign out,se déconnecter|déconnexion,logout,
+application,demande,application,"A request for a benefit or service is a « demande ». « Application » in French means a software app."
+benefit,prestation,bénéfice,"Government benefit = « prestation ». « Bénéfice » means profit."
+upload,téléverser,uploader|télécharger vers,"Canadian usage. « Télécharger » alone is ambiguous; reserve it for download."
+download,télécharger,downloader,
+file,fichier,,
+information,renseignements|information,informations,"Personal information = « renseignements (personnels) ». Never plural « informations » in this sense."
+required,obligatoire,requis,"Required field = « champ obligatoire »."
+supporting documents,documents à l’appui|pièces justificatives,documents de support,
+social insurance number,numéro d’assurance sociale,numéro de sécurité sociale,"NAS in French, SIN in English. « Sécurité sociale » is the France term."
+postal code,code postal,,
+province or territory,province ou territoire,,
+date of birth,date de naissance,,
+phone number,numéro de téléphone,,
+save,enregistrer,sauvegarder,"Button text: « Enregistrer »."
+cancel,annuler,canceller,
+submit,soumettre|envoyer,,
+privacy notice,avis de confidentialité,notice de confidentialité|politique de privacité,
+terms and conditions,conditions d’utilisation|modalités,termes et conditions,"« Termes et conditions » is a calque."
+contact us,contactez-nous|nous joindre,,
+deadline,date limite,deadline,

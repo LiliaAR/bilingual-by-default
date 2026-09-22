@@ -1,0 +1,49 @@
+:root {
+  --ink: #1d2733;
+  --muted: #5b6875;
+  --line: #d6dde4;
+  --accent: #26374a;
+  --action: #1a5a96;
+  --danger: #b3261e;
+  --bg: #ffffff;
+  font-family: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 24px; border-bottom: 4px solid var(--accent);
+}
+.brand { font-weight: 600; color: var(--muted); font-size: 14px; }
+.topbar nav a { margin-left: 20px; color: var(--action); }
+main { max-width: 720px; margin: 0 auto; padding: 24px; }
+h1 { font-size: 30px; line-height: 1.2; }
+.lead { font-size: 18px; color: var(--muted); }
+.deadline { font-weight: 600; }
+fieldset { border: 1px solid var(--line); border-radius: 6px; padding: 16px 20px; margin: 20px 0; }
+legend { font-weight: 700; padding: 0 6px; }
+label { display: block; font-weight: 600; margin-top: 14px; }
+input, select { display: block; width: 100%; max-width: 420px; padding: 8px; margin-top: 4px; font-size: 16px; border: 1px solid #8a959f; border-radius: 4px; }
+abbr { color: var(--danger); text-decoration: none; }
+.hint { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+.estimate { font-size: 18px; font-weight: 600; }
+.error { color: var(--danger); font-weight: 600; }
+.actions { display: flex; gap: 12px; align-items: center; margin-top: 16px; }
+
+[hidden] { display: none !important; }
+
+button, .button {
+  padding: 10px 14px; font-size: 16px; border-radius: 4px; border: 2px solid var(--action);
+  background: var(--action); color: #fff; cursor: pointer; display: inline-block; text-align: center; font-weight: 600;
+}
+button.secondary, .button.secondary { background: #fff; color: var(--action); }
+button.link { background: none; border: none; color: var(--action); text-decoration: underline; width: auto; }
+/* ?broken=1 : the classic bug. Buttons sized for English, French gets cut off.
+   Used as the opening hook of the talk. */
+.fixed-width button:not(.link), .fixed-width .button {
+  width: 170px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+footer { border-top: 1px solid var(--line); padding: 16px 24px; display: flex; gap: 24px; }
+footer a { color: var(--action); }

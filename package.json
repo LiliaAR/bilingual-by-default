@@ -1,0 +1,17 @@
+{
+  "name": "bilingual-by-default",
+  "version": "1.0.0",
+  "description": "Demo: EN/fr-CA parity enforced in the repo with GitHub Copilot (custom instructions, an Agent Skill, a custom agent) and a GitHub Actions gate.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "check:i18n": "node scripts/check-parity.mjs",
+    "check:i18n:strict": "node scripts/check-parity.mjs --strict",
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
