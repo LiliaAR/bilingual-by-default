@@ -1,7 +1,7 @@
 # Bilingual by default
 
 **EN/FR parity enforced in the repo, with GitHub Copilot.**
-Demo for GitHub Copilot Dev Days, Ottawa, 30 September 2026.
+Demo for GitHub Copilot Dev Days.
 
 > Copilot writes the strings. The glossary decides the words. The pipeline enforces the rules.
 
