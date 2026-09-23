@@ -27,6 +27,8 @@ legend { font-weight: 700; padding: 0 6px; }
 label { display: block; font-weight: 600; margin-top: 14px; }
 input, select { display: block; width: 100%; max-width: 420px; padding: 8px; margin-top: 4px; font-size: 16px; border: 1px solid #8a959f; border-radius: 4px; }
 abbr { color: var(--danger); text-decoration: none; }
+.checkbox { display: flex; gap: 8px; align-items: center; font-weight: 400; }
+.checkbox input { width: auto; margin: 0; }
 .hint { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
 .estimate { font-size: 18px; font-weight: 600; }
 .error { color: var(--danger); font-weight: 600; }
