@@ -9,6 +9,7 @@ const glossary = loadGlossary(resolve(ROOT, '.github/skills/fr-ca-terminology/gl
 const check = (base, target) =>
   checkLocales({ base, target, baseName: 'en-CA', targetName: 'fr-CA', glossary });
 const codes = (findings) => findings.map((f) => f.code.split(' ')[0]);
+const noGlossary = glossary.length === 0 && 'no glossary in this repo';
 
 test('the real locale files pass (no errors)', () => {
   const { errors } = run({ root: ROOT, log: () => {} });
@@ -38,13 +39,13 @@ test('E4: French plural needs one and other', () => {
   assert.ok(codes(f).includes('E4'));
 });
 
-test('E5: glossary term must be used (email -> courriel)', () => {
+test('E5: glossary term must be used (email -> courriel)', { skip: noGlossary }, () => {
   const f = check({ k: 'Email address' }, { k: 'Adresse e-mail' });
   assert.ok(codes(f).includes('E5'));
   assert.ok(codes(f).includes('E6'));
 });
 
-test('E5: "application" must become "demande", not "application"', () => {
+test('E5: "application" must become "demande", not "application"', { skip: noGlossary }, () => {
   const f = check({ k: 'Submit application' }, { k: 'Soumettre l’application' });
   assert.ok(codes(f).includes('E5'));
   assert.ok(codes(f).includes('E6'));
@@ -60,7 +61,7 @@ test('a placeholder named {email} is not mistaken for the word email', () => {
   assert.deepEqual(f, []);
 });
 
-test('glossary matching is whole-word and accent-aware', () => {
+test('glossary matching is whole-word and accent-aware', { skip: noGlossary }, () => {
   // "prestation" contains no "benefit" issue; "bénéfice" must be flagged
   const f = check({ k: 'Your benefit' }, { k: 'Votre bénéfice' });
   assert.ok(codes(f).includes('E6'));
